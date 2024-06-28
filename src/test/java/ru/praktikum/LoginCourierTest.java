@@ -3,7 +3,6 @@ package ru.praktikum;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,18 +15,13 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class LoginCourierTest {
 
-    private static final String BASE_URI="https://qa-scooter.praktikum-services.ru";
-    private static final String CREATE_ENDPOINT="/api/v1/courier";
-    private static final String LOGIN_ENDPOINT="/api/v1/courier/login";
     Courier courier;
     private CourierSteps courierSteps = new CourierSteps();
-    //private String login;
-    //private String password;
+
 
     @Before
     public void setUp(){
-        //RestAssured.baseURI=BASE_URI;
-        RestAssured.filters(new RequestLoggingFilter());
+           RestAssured.filters(new RequestLoggingFilter());
 
         courier = new Courier();
         courier.setLogin(randomAlphabetic(10));
